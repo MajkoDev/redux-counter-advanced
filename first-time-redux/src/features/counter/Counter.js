@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, reset, incrementByAmount } from "./counterSlice";
 import { useState } from "react";
+import styles from "./Counter.module.css";
 
 export default function Counter() {
   const count = useSelector((state) => state.counter.count);
@@ -18,20 +19,45 @@ export default function Counter() {
   };
 
   return (
-    <div>
-      <p>{count}</p>
+    <div className={styles.counter}>
+
+      <p className={styles.mainCount}>{count}</p>
+
       <div>
-        <button onClick={() => dispatch(increment())}>+</button>
-        <button onClick={() => dispatch(decrement())}>-</button>
+        <button
+          className={styles.primaryBtn}
+          onClick={() => dispatch(increment())}
+        >
+          +
+        </button>
+        <button
+          className={styles.primaryBtn}
+          onClick={() => dispatch(decrement())}
+        >
+          -
+        </button>
       </div>
+
+      <p className={styles.description}>
+        You can choose account that you want to add.
+      </p>
+
       <input
-        type='text'
+        type="text"
+        className={styles.inputNum}
         value={incrementAmount}
         onChange={(e) => setIncrementAmount(e.target.value)}
       />
       <div>
-      <button onClick={() => dispatch(incrementByAmount(addValue))}>Add Amount</button>
-      <button onClick={resetAll}>Reset</button>
+        <button
+          className={styles.secondaryBtn}
+          onClick={() => dispatch(incrementByAmount(addValue))}
+        >
+          Add Amount
+        </button>
+        <button className={styles.secondaryBtn} onClick={resetAll}>
+          Reset
+        </button>
       </div>
     </div>
   );

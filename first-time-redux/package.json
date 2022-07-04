@@ -1,5 +1,5 @@
 {
-  "name": "first-time-redux",
+  "name": "redux-counter-advanced",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
